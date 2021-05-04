@@ -6,13 +6,9 @@ namespace RRUI
     {
         static void Main(string[] args)
         {
-            Restaurant goodTaste = new Restaurant("Good Taste", "Baguio City", "Benguet");
-            goodTaste.Review = new Review
-            {
-                Rating = 5,
-                Description = "A M A Z I N G"
-            };
-            Console.WriteLine(goodTaste.ToString());
+            IMenu menu = new MainMenu();
+            menu.Start();
+
         }
     }
 }
