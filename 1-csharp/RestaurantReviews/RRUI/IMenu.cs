@@ -1,6 +1,6 @@
 namespace RRUI
 {
-    public class IMenu
+    public interface IMenu
     {
         void Start();
     }

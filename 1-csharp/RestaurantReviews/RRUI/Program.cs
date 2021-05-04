@@ -1,4 +1,4 @@
-﻿  namespace RRUI
+﻿namespace RRUI
 {
     class Program
     {
