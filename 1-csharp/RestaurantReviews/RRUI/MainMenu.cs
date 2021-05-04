@@ -14,7 +14,7 @@ namespace RRUI
             switch(input)
             {
                 case "0":
-                    ViewRestaurant()
+                    ViewRestaurant();
                     break;
                 case "1":
 
