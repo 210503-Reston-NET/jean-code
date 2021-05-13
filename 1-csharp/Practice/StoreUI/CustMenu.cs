@@ -5,15 +5,13 @@ using System.Collections.Generic;
 
 namespace StoreUI
 {
-    public class CustMenu
+    public class CustMenu : IMenu
     {
         public void StartMenu(){
 
-            menu LoginMenu = new menu();
 
-
+            LoginMenu LoginMenu = new LoginMenu();
             bool repeat = true;
-
             do{
             Console.WriteLine("[0] Browse Bikes");
             Console.WriteLine("[1] Go Back");
@@ -21,15 +19,32 @@ namespace StoreUI
             switch (input)
             {
                 case "0":
-                    // Console.WriteLine(Miami.ToString());
+                    ViewBike();
                     break;
                 case "1":
-                    LoginMenu.StartMenu();
+                    LoginMenu.StartLogin();
                     break;
                 default:
                     break;
             }
             }while(repeat);
+        }
+        private void ViewBike(){
+            List<Item> items = new List<Item>();
+            {
+                new Item{
+                    BikeBrand = "Giant",
+                    BikeType = "MountainBike"
+                };
+            }
+            if(items.Count == 0)System.Console.WriteLine("No Items");
+            else
+            {
+                foreach(Item item in items)
+                {
+                    System.Console.WriteLine(item.ToString());
+                }
+            }
         }
     }
 }
