@@ -1,11 +1,20 @@
 ﻿using System;
+using StoreModels;
 
-namespace PlayGround
+namespace StoreUI
 {
     public class menu
     {
         public void StartMenu()
         {
+            // Location Miami = new Location("Miami", "FL");
+            // Miami.Item = new List<Item>
+            // {
+            //     new Item{
+            //         BikeBrand = "Giant",
+            //         BikeType = "MountainBike"
+            //     },
+            // };
             LoginMenu LoginMenu = new LoginMenu();
             bool repeat = true;
             do{
@@ -26,7 +35,6 @@ namespace PlayGround
                     repeat = false;
                     break;
                 default:
-                    //invalid input
                     Console.WriteLine("Please input a valid option");
                     break;
             }

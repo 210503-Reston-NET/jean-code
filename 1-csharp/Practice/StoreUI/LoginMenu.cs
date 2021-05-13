@@ -1,12 +1,14 @@
 using System;
 
-namespace PlayGround
+namespace StoreUI
 {
     public class LoginMenu
     {
         public void StartLogin(){
 
             menu LoginMenu = new menu();
+
+            AdminMenu admin = new AdminMenu();
 
             bool repeat = true;
             do{
@@ -20,7 +22,8 @@ namespace PlayGround
                         Console.WriteLine("You are a Customer");
                         break;
                     case "1":
-                        Console.WriteLine("You are an Admin");
+                        admin.StartMenu();
+                        Console.WriteLine("Admin");
                         break;
                     case "2":
                         LoginMenu.StartMenu();

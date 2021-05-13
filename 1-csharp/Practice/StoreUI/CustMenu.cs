@@ -1,0 +1,36 @@
+using System;
+using StoreModels;
+
+namespace StoreUI
+{
+    public class CustMenu
+    {
+        public void StartMenu(){
+
+            menu LoginMenu = new menu();
+
+
+            bool repeat = true;
+
+            do{
+            Console.WriteLine("[0] Browse Bikes");
+            Console.WriteLine("[1] Go Back");
+            string input = Console.ReadLine();
+            switch (input)
+            {
+                case "0":
+                    Console.WriteLine(miami.ToString());
+                    break;
+                case "1":
+                    LoginMenu.StartMenu();
+                    break;
+                default:
+                    break;
+            }
+            }while(repeat);
+        }
+    }
+}
+
+
+                
