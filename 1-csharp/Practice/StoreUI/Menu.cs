@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using StoreModels;
 
 namespace StoreUI
@@ -7,14 +8,14 @@ namespace StoreUI
     {
         public void StartMenu()
         {
-            // Location Miami = new Location("Miami", "FL");
-            // Miami.Item = new List<Item>
-            // {
-            //     new Item{
-            //         BikeBrand = "Giant",
-            //         BikeType = "MountainBike"
-            //     },
-            // };
+            Location Miami = new Location("Miami", "FL");
+            Miami.Items = new List<Item>
+            {
+                new Item{
+                    BikeBrand = "Giant",
+                    BikeType = "MountainBike"
+                },
+            };
             LoginMenu LoginMenu = new LoginMenu();
             bool repeat = true;
             do{
@@ -27,6 +28,7 @@ namespace StoreUI
             switch (input)
             {
                 case "0":
+                    System.Console.WriteLine(Miami.ToString());
                     Console.WriteLine("Case 0");
                     LoginMenu.StartLogin();
                     break;

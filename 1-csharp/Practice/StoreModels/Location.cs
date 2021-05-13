@@ -16,7 +16,7 @@ namespace StoreModels
         }
         public string City{get;set;}
         public string State{get;set;}
-        // public List<Location> Locations {get;set;}
+        public List<Item> Items {get;set;}
 
 
         public override string ToString()

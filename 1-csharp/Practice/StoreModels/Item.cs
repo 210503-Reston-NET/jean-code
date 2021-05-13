@@ -8,7 +8,7 @@ namespace StoreModels
 
         public string BikeType{get;set;}
 
-        // public List<Item> Items {get;set;}
+        public List<Item> Items {get;set;}
 
         public override string ToString()
         {

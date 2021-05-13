@@ -5,6 +5,11 @@ namespace StoreUI
     public class AdminMenu
     {
         public void StartMenu(){
+
+            menu LoginMenu = new menu();
+
+            LoginMenu Menu = new LoginMenu();
+
             bool repeat = true;
             do{
                 System.Console.WriteLine("[0] Add item to inventory");
@@ -21,6 +26,7 @@ namespace StoreUI
                         break;
                     case "2":
                         System.Console.WriteLine("Go Back");
+                        Menu.StartLogin();
                         break;
                     default:
                         break;

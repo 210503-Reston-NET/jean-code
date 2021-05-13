@@ -1,5 +1,7 @@
 using System;
 using StoreModels;
+using System.Collections.Generic;
+
 
 namespace StoreUI
 {
@@ -19,7 +21,7 @@ namespace StoreUI
             switch (input)
             {
                 case "0":
-                    Console.WriteLine(miami.ToString());
+                    // Console.WriteLine(Miami.ToString());
                     break;
                 case "1":
                     LoginMenu.StartMenu();
