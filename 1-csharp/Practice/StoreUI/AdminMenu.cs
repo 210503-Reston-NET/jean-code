@@ -1,9 +1,14 @@
 using System;
+using StoreModels;
+using StoreBL;
+using System.Collections.Generic;
 
 namespace StoreUI
 {
     public class AdminMenu
     {
+        private IItemBL _itemBL;
+        private IValidationService _validate;
         public void StartMenu(){
 
             menu LoginMenu = new menu();
@@ -32,6 +37,24 @@ namespace StoreUI
                         break;
                 }
             }while(repeat);
+        }
+
+        private void AddBike()
+        {
+            Console.WriteLine("Please enter the details of the bike you want to add");
+            string bikeBrand = _validate.ValidateString("Enter the bike BRAND");
+            string bikeType = _validate.ValidateString("Enter the bike TYPE");
+            try
+            {
+                Item newBike = new Item(bikeBrand, bikeType);
+                Item createdBike = _itemBL.AddItem(newBike);
+                System.Console.WriteLine("New Item Created!");
+                System.Console.WriteLine(createdBike.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

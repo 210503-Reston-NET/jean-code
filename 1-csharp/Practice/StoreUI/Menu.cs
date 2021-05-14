@@ -11,13 +11,13 @@ namespace StoreUI
         public void StartMenu()
         {
             Location Miami = new Location("Miami", "FL");
-            Miami.Items = new List<Item>
-            {
-                new Item{
-                    BikeBrand = "Giant",
-                    BikeType = "MountainBike"
-                },
-            };
+            // Miami.Items = new List<Item>
+            // {
+            //     new Item{
+            //         BikeBrand = "Giant",
+            //         BikeType = "MountainBike"
+            //     },
+            // };
             LoginMenu LoginMenu = new LoginMenu();
             bool repeat = true;
             do{

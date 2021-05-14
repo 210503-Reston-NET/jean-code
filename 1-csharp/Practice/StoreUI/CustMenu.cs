@@ -30,21 +30,28 @@ namespace StoreUI
             }while(repeat);
         }
         private void ViewBike(){
-            List<Item> items = new List<Item>();
-            {
-                new Item{
-                    BikeBrand = "Giant",
-                    BikeType = "MountainBike"
-                };
-            }
-            if(items.Count == 0)System.Console.WriteLine("No Items");
-            else
-            {
-                foreach(Item item in items)
-                {
-                    System.Console.WriteLine(item.ToString());
-                }
-            }
+            Location Miami = new Location("Miami", "FL");
+            Miami.Items = new List<Item>();
+            System.Console.WriteLine("Default location: ");
+            // {
+            //     new Item{
+            //         BikeBrand = "Giant",
+            //         BikeType = "MountainBike"
+            //     };
+            //     new Item{
+            //         BikeBrand = "Specialized",
+            //         BikeType = "RoadBike"
+            //     };
+            // }
+            System.Console.WriteLine(Miami.City + ", " + Miami.State);
+            // if(Item == 0)System.Console.WriteLine("No Items");
+            // else
+            // {
+            //     foreach(Item item in Items)
+            //     {
+            //         System.Console.WriteLine(item.ToString());
+            //     }
+            // }
         }
     }
 }

@@ -18,10 +18,10 @@ namespace RRUI
             bool repeat = true;
             do
             {
-                Console.WriteLine("Welcome to my Bike Shop!");
+                Console.WriteLine("Welcome to my Restaurant Menu!");
                 Console.WriteLine("What would you like to do?");
-                Console.WriteLine("[0] View Bicycles");
-                Console.WriteLine("[1] view Items");
+                Console.WriteLine("[0] View restaurants");
+                Console.WriteLine("[1] Create a restaurant");
                 Console.WriteLine("[2] Go back");
                 string input = Console.ReadLine();
                 switch (input)
