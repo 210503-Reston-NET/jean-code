@@ -1,24 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using StoreModels;
+using StoreBL;
+using StoreDL;
 
 namespace StoreUI
 {
     public class menu : IMenu
     {
-
-        // private IMenu submenu;
+        private IMenu submenu;
         public void StartMenu()
         {
-            Location Miami = new Location("Miami", "FL");
-            // Miami.Items = new List<Item>
-            // {
-            //     new Item{
-            //         BikeBrand = "Giant",
-            //         BikeType = "MountainBike"
-            //     },
-            // };
-            LoginMenu LoginMenu = new LoginMenu();
             bool repeat = true;
             do{
             Console.WriteLine("Welcome to my Bike Shop");
@@ -29,7 +20,8 @@ namespace StoreUI
             switch (input)
             {
                 case "0":
-                    LoginMenu.StartLogin();
+                    submenu = UserFactory.GetMenu("login");
+                    submenu.StartMenu();
                     break;
                 case "1":
                     Console.WriteLine("Goodbye - Thank you for visiting my Bike Shop");
@@ -40,6 +32,6 @@ namespace StoreUI
                     break;
             }
         } while (repeat);
+        }
     }
-}
 }

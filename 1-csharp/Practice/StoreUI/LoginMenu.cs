@@ -1,16 +1,21 @@
 using System;
+using StoreDL;
+using StoreBL;
+using System.Collections.Generic;
 
 namespace StoreUI
 {
-    public class LoginMenu
+    public class LoginMenu : IMenu
     {
-        public void StartLogin(){
+        // private IMenu submenu;
+        // public AdminMenu admin;
+        public void StartMenu(){
 
             menu LoginMenu = new menu();
-
+        
             AdminMenu admin = new AdminMenu();
 
-            CustMenu cust = new CustMenu();
+            // CustMenu cust = new CustMenu();
 
             bool repeat = true;
             do{
@@ -21,7 +26,7 @@ namespace StoreUI
                 switch (input)
                 {
                     case "0":
-                        cust.StartMenu();
+                        // cust.StartMenu();
                         Console.WriteLine("You are a Customer");
                         break;
                     case "1":
@@ -29,7 +34,7 @@ namespace StoreUI
                         Console.WriteLine("Admin");
                         break;
                     case "2":
-                        LoginMenu.StartMenu();
+                        repeat = false;
                         break;
                     default:
                         System.Console.WriteLine("Please enter a valid response");

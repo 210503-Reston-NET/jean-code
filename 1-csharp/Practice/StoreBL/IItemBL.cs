@@ -5,8 +5,9 @@ namespace StoreBL
 {
     public interface IItemBL
     {
-        List<Item> GetAllItems();
+        List<Item> ViewBike();
 
-        Item AddItem(Item item);
+        // Item AddItem(Item item);
+
     }
 }

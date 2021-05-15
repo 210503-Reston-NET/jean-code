@@ -1,12 +1,20 @@
 using System;
 using StoreModels;
 using System.Collections.Generic;
-
+using StoreBL;
 
 namespace StoreUI
 {
     public class CustMenu : IMenu
     {
+        private ICustBL _custBL;
+
+        private IValidationService _validate;
+        public CustMenu(ICustBL custBL, IValidationService validate)
+        {
+            _custBL = custBL;
+            _validate = validate;
+        }
         public void StartMenu(){
 
 
@@ -22,9 +30,10 @@ namespace StoreUI
                     ViewBike();
                     break;
                 case "1":
-                    LoginMenu.StartLogin();
+                    LoginMenu.StartMenu();
                     break;
                 default:
+                System.Console.WriteLine("Invalid input");
                     break;
             }
             }while(repeat);

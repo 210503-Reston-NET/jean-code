@@ -5,10 +5,16 @@ namespace StoreDL
 {
     public interface IRepository
     {
-         List<Item> GetAllItems();
+        List<Item> GetAllItems();
 
-         Item AddItem(Item item);
+        Item AddItem(Item item);
 
-         Item GetItem(Item item);
+        Item ViewBike(Item item);
+
+        // List<Cust> GetAllCusts();
+
+        // Cust AddCust(Cust cust);
+
+        Cust GetCust(Cust cust);
     }
 }

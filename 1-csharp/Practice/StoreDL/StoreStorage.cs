@@ -9,5 +9,9 @@ namespace StoreDL
         {
             new Item("Cannondale", "Hybrid")
         };
+        public static List<Cust> Custs = new List<Cust>()
+        {
+            new Cust("John", "Doe", "Empty")
+        };
     }
 }

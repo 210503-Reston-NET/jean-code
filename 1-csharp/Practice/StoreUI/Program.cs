@@ -7,8 +7,9 @@ namespace StoreUI
     {
         static void Main(string[] args)
         {
-            menu X = new menu();
-            X.StartMenu();
+            // menu X = new menu();
+            // X.StartMenu();
+            UserFactory.GetMenu("main").StartMenu();
         }
     }
 }
