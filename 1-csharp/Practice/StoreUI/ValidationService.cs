@@ -13,8 +13,8 @@ namespace StoreUI
                 Console.WriteLine(prompt);
                 response = Console.ReadLine();
                 repeat = String.IsNullOrWhiteSpace(response);
-                if(repeat)Console.WriteLine("Please input a non empty string");
-            }while(repeat);
+                if (repeat) Console.WriteLine("Please input a non empty string");
+            } while (repeat);
             return response;
         }
     }

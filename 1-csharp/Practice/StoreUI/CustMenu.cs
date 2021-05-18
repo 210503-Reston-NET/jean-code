@@ -7,14 +7,14 @@ namespace StoreUI
 {
     public class CustMenu : IMenu
     {
-        private ICustBL _custBL;
+        // private ICustBL _custBL;
 
-        private IValidationService _validate;
-        public CustMenu(ICustBL custBL, IValidationService validate)
-        {
-            _custBL = custBL;
-            _validate = validate;
-        }
+        // private IValidationService _validate;
+        // public CustMenu(ICustBL custBL, IValidationService validate)
+        // {
+        //     _custBL = custBL;
+        //     _validate = validate;
+        // }
         public void StartMenu(){
 
 
@@ -30,7 +30,7 @@ namespace StoreUI
                     ViewBike();
                     break;
                 case "1":
-                    LoginMenu.StartMenu();
+                    repeat = false;
                     break;
                 default:
                 System.Console.WriteLine("Invalid input");
@@ -40,27 +40,11 @@ namespace StoreUI
         }
         private void ViewBike(){
             Location Miami = new Location("Miami", "FL");
+            Item NewBike = new Item("Canondale", "Hybrid");
             Miami.Items = new List<Item>();
             System.Console.WriteLine("Default location: ");
-            // {
-            //     new Item{
-            //         BikeBrand = "Giant",
-            //         BikeType = "MountainBike"
-            //     };
-            //     new Item{
-            //         BikeBrand = "Specialized",
-            //         BikeType = "RoadBike"
-            //     };
-            // }
             System.Console.WriteLine(Miami.City + ", " + Miami.State);
-            // if(Item == 0)System.Console.WriteLine("No Items");
-            // else
-            // {
-            //     foreach(Item item in Items)
-            //     {
-            //         System.Console.WriteLine(item.ToString());
-            //     }
-            // }
+
         }
     }
 }

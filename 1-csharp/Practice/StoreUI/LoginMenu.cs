@@ -15,7 +15,7 @@ namespace StoreUI
         
             AdminMenu admin = new AdminMenu();
 
-            // CustMenu cust = new CustMenu();
+            CustMenu cust = new CustMenu();
 
             bool repeat = true;
             do{
@@ -26,7 +26,7 @@ namespace StoreUI
                 switch (input)
                 {
                     case "0":
-                        // cust.StartMenu();
+                        cust.StartMenu();
                         Console.WriteLine("You are a Customer");
                         break;
                     case "1":

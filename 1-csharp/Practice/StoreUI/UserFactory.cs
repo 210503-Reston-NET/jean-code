@@ -17,7 +17,7 @@ namespace StoreUI
                     // return new AdminMenu(new ItemBL(new RepoFile()), new ValidationService());
                     return new AdminMenu();
                 case "user":
-                    return new AdminMenu();
+                    // return new AdminMenu();
                     // return new CustMenu(new CustBL(new RepoFile()), new ValidationService());
                 default:
                     return null;

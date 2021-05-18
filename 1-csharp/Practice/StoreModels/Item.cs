@@ -20,7 +20,7 @@ namespace StoreModels
 
         public override string ToString()
         {
-            return $" BikeBrand: {BikeBrand} \n\n BikeType: {BikeType}";
+            return $" BikeBrand: {BikeBrand} \n\t BikeType: {BikeType}";
         }
         public bool Equals(Item item)
         {
