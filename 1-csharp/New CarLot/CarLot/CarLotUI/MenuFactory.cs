@@ -37,6 +37,10 @@ namespace CarLotUI
                             //To do: implement validation service add implementation here
                    // return new MainMenu(new CarBL(new RepoDB(context)),);
                 //    return null;
+                case "login":
+                    return new LoginMenu(new CarBL(new RepoDB(context)), new ValidationService());
+                case "customer":
+                    return new CustomerMenu(new CarBL(new RepoDB(context)), new ValidationService());
                 default:
                     return null;
             }

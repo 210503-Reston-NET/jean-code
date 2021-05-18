@@ -1,23 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-/// <summary>
-/// Namespace for the models/custom data structures involved in Restaurant Reviews
-/// </summary>
+
 namespace CarLotModels
 {
-    /// <summary>
-    /// Data structure used to define a restaurant 
-    /// </summary>
     public class Car
     {
-        // Class Members
-        // 1. Constructor - use this to create an instance of the class
-        // 2. Fields - defines the characteristics of a class
-        // 3. Methods - defines the behavior of a class
-        // 4. Properties - also known as smart fields, are accessor methods used to access private backing fields (private fields)
-        // *Note that properties are analogous to Java getter and setter
-        // * Property naming convention uses PascalCase (like methods)
         private string _model;
         public Car(string make, string model, int year)
         {
@@ -29,13 +17,8 @@ namespace CarLotModels
         {
             this.Id = id;
         }
-        public Car()
-        {
-
-        }
-
+        public Car(){}
         public string Make { get; set; }
-
         public string Model
         {
             get;set;

@@ -8,7 +8,7 @@ namespace CarLotUI
         {
             // MainMenu Menu = new MainMenu();
             // Menu.MainStart();
-            MenuFactory.GetMenu("main").Start();
+            MenuFactory.GetMenu("login").Start();
         }
     }
 }

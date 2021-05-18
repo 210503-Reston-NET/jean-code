@@ -59,12 +59,12 @@ namespace CarLotDL.Entities
 
             entity.Property(e => e.Rating).HasColumnName("rating");
 
-            entity.Property(e => e.CarId).HasColumnName("restaurantID");
+            entity.Property(e => e.CarId).HasColumnName("carID");
 
             entity.HasOne(d => d.Car)
                 .WithMany(p => p.Descriptions)
                 .HasForeignKey(d => d.CarId)
-                .HasConstraintName("FK__reviews__restaur__6D0D32F4");
+                .HasConstraintName("FK__descripti__carID__7E37BEF6");
             });
 
 

@@ -20,33 +20,44 @@ namespace CarLotUI
 
         public void Start(){
             bool repeat = true;
+
+            string Pin = "1111";
+            System.Console.WriteLine("Please Enter pin to continue");
+            string pinInput = System.Console.ReadLine();
             do
             {
-                Console.WriteLine("Welcome to my Car Lot");
-                Console.WriteLine("[0] Add Car");
-                Console.WriteLine("[1] View Car");
-                Console.WriteLine("[2] Exit");
+                if(Pin == pinInput){
+                Console.WriteLine("[0] Add Car to inventory");
+                Console.WriteLine("[1] View inventory");
+                Console.WriteLine("[2] Go Back");
 
                 string input = Console.ReadLine();
                 switch(input)
                 {
                     case "0":
-                        System.Console.WriteLine("Add");
                         AddACar();
                         break;
                     case "1":
-                        System.Console.WriteLine("View");
                         ViewCars();
                         break;
                     case "2":
-                        System.Console.WriteLine("Exit");
                         repeat = false;
                         break;
                     default:
                         System.Console.WriteLine("Enter a valid response");
                         break;
                 }
+                }else if(pinInput != Pin){
+                    System.Console.WriteLine("Wrong Pin");
+                    repeat = false;
+                }
             }while(repeat);
+        }
+
+        public void AdminPin()
+        {
+
+
         }
 
         private void AddACar()
