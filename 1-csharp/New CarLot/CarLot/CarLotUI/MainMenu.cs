@@ -54,12 +54,6 @@ namespace CarLotUI
             }while(repeat);
         }
 
-        public void AdminPin()
-        {
-
-
-        }
-
         private void AddACar()
         {
             string make = _validate.ValidateString("Enter the vehicle make: ");
