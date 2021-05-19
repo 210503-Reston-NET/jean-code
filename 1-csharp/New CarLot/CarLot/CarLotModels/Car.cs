@@ -6,7 +6,7 @@ namespace CarLotModels
 {
     public class Car
     {
-        private string _model;
+        // private string _model;
         public Car(string make, string model, int year)
         {
             this.Make = make;

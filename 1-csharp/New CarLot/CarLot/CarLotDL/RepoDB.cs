@@ -16,8 +16,6 @@ namespace CarLotDL
         }
         public Model.Car AddCar(Model.Car car)
         {
-            //This records a change in the context change tracker that we want to add this particular entity to the 
-            // db
             _context.Cars.Add(
                 new Entity.Car
                 {
@@ -26,9 +24,6 @@ namespace CarLotDL
                     Year = car.Year
                 }
             );
-            //This persists the change to the db
-            // Note: you can create a separate method that persists the changes so that you can execute repo commands in
-            //the BL and save changes only when all the operations return no exceptions
             _context.SaveChanges();
             return car;
         }
@@ -65,25 +60,12 @@ namespace CarLotDL
 
         public Model.Car GetCar(Model.Car car)
         {
-            //find me a restaurant from the db that is equal to the input restaurant
             Entity.Car found = _context.Cars.FirstOrDefault(resto => resto.Make == car.Make && resto.Model == car.Model && resto.Year == car.Year);
-            // we get the results and return null if nothing is found, otherwise return a Model.Restaurant that was found
             if (found == null) return null;
             return new Model.Car(found.Id, found.Make, found.Model, found.Year);
         }
-
         public List<Description> GetDescriptions(Car car)
         {
-            // We get the reviews such that, we find the restuarant that matches the restaurant being passed, 
-            // we get the id of that specific restaurant, compare it to the FK references in the Reviews table
-            // get the reviews that match the condition
-            //  transform the entity type reviews to a model type review
-            // Immediately execute the linq query by calling tolist, which takes the data from the db and puts it in 
-            // a list
-
-            //Finding the restaurant from the db, to be able to take advantage of the Id property the model doesn't have (well now it does)
-            //Entity.Restaurant foundResto = _context.Restaurants.FirstOrDefault(resto => resto.Name == restaurant.Name && resto.City == restaurant.City && resto.State == restaurant.State);
-
             return _context.Descriptions.Where(
                 description => description.Id == GetCar(car).Id
                 ).Select(
@@ -94,5 +76,46 @@ namespace CarLotDL
                     }
                 ).ToList();
         }
+
+        public Model.Customer AddCustomer(Model.Customer customer)
+        {
+
+            _context.Customers.Add(
+                new Entity.Customer
+                {
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    Phone = customer.Phone
+                }
+            );
+            _context.SaveChanges();
+            return customer;
+        }
+
+        public List<Model.Customer> GetAllCustomers()
+        {
+            return _context.Customers
+            .Select(
+                customer => new Model.Customer(customer.Id, customer.FirstName, customer.LastName, customer.Phone)
+            ).ToList();
+        }
+
+        public Model.Customer GetCustomer(Model.Customer customer)
+        {
+            //find me a restaurant from the db that is equal to the input restaurant
+            Entity.Customer found = _context.Customers.FirstOrDefault(resto => resto.FirstName == customer.FirstName && resto.LastName == customer.LastName && resto.Phone == customer.Phone);
+            // we get the results and return null if nothing is found, otherwise return a Model.Restaurant that was found
+            if (found == null) return null;
+            return new Model.Customer(found.Id, found.FirstName, found.LastName, found.Phone);
+        }
+
+        public Customer DeleteCustomer(Customer customer)
+        {
+            Entity.Customer toBeDeleted = _context.Customers.First(resto => resto.Id == customer.Id);
+            _context.Customers.Remove(toBeDeleted);
+            _context.SaveChanges();
+            return customer;
+        }
+
     }
 }

@@ -20,6 +20,9 @@ namespace CarLotDL.Entities
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Description> Descriptions { get; set; }
 
+        public virtual DbSet<Customer> Customers { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
@@ -46,6 +49,7 @@ namespace CarLotDL.Entities
                 .HasColumnName("model");
             });
 
+
             modelBuilder.Entity<Description>(entity =>
             {
             entity.ToTable("descriptionTable");
@@ -67,7 +71,28 @@ namespace CarLotDL.Entities
                 .HasConstraintName("FK__descripti__carID__7E37BEF6");
             });
 
+            
+            modelBuilder.Entity<Customer>(entity =>
+            {
+                entity.ToTable("customers");
 
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("FirstName");
+
+                entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("LastName");
+
+                entity.Property(e => e.Phone)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("Phone");
+            });
 
             OnModelCreatingPartial(modelBuilder);
         }
