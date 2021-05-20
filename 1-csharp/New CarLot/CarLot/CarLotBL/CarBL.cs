@@ -12,13 +12,11 @@ namespace CarLotBL
         {
             _repo = repo;
         }
-
         public Car AddCar(Car car)
         {
-            // Todo: call a repo method that adds a restaurant
             if (_repo.GetCar(car) != null)
             {
-                throw new Exception("Restaurant already exists :<");
+                throw new Exception("Car already exists :<");
             }
             return _repo.AddCar(car);
         }
@@ -27,7 +25,7 @@ namespace CarLotBL
         {
             Car toBeDeleted = _repo.GetCar(car);
             if (toBeDeleted != null) return _repo.DeleteCar(toBeDeleted);
-            else throw new Exception("Restaurant does not exist. Must've been deleted already :>");
+            else throw new Exception("Car does not exist. Must've been deleted already :>");
         }
 
         public List<Car> GetAllCars()

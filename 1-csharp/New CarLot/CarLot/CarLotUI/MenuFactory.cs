@@ -26,11 +26,15 @@ namespace CarLotUI
             switch (menuType.ToLower())
             {
                 case "main":
-                    return new MainMenu(new CarBL(new RepoDB(context)), new ValidationService());
+                    return new MainMenu(new CarBL(new RepoDB(context)), new ValidationService(), new LocationBL(new RepoDB(context)));
                 case "login":
                     return new LoginMenu(new CarBL(new RepoDB(context)), new ValidationService());
                 case "customer":
                     return new CustomerMenu(new CustomerBL(new RepoDB(context)), new ValidationService());
+                case "customertwo":
+                    return new CustomerMenuTwo(new CustomerBL(new RepoDB(context)), new ValidationService());
+                case "admin":
+                    return new AdminMenu(new CarBL(new RepoDB(context)), new ValidationService());
                 default:
                     return null;
             }

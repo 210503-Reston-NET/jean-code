@@ -35,7 +35,8 @@ namespace CarLotDL
                 {
                     Rating = description.Rating,
                     Mpg = description.Mpg,
-                    CarId = GetCar(car).Id
+                    Price = description.Price,
+
                 }
             );
             _context.SaveChanges();
@@ -72,7 +73,8 @@ namespace CarLotDL
                     description => new Model.Description
                     {
                         Rating = description.Rating,
-                        Mpg = description.Mpg
+                        Mpg = description.Mpg,
+                        Price = description.Price
                     }
                 ).ToList();
         }
@@ -117,5 +119,39 @@ namespace CarLotDL
             return customer;
         }
 
+        public Model.Location AddLocation(Model.Location location)
+        {
+            _context.Locations.Add(
+                new Entity.Location
+                {
+                    City = location.City,
+                    State = location.State,
+                    Country = location.Country
+                }
+            );
+            _context.SaveChanges();
+            return location;
+        }
+        public Location DeleteLocation(Location location)
+        {
+            Entity.Location toBeDeleted = _context.Locations.First(resto => resto.Id == location.Id);
+            _context.Locations.Remove(toBeDeleted);
+            _context.SaveChanges();
+            return location;
+        }
+        public List<Model.Location> GetAllLocations()
+        {
+            return _context.Locations
+            .Select(
+                location => new Model.Location(location.Id, location.City, location.State, location.Country)
+            ).ToList();
+        }
+        public Model.Location GetLocation(Model.Location location)
+        {
+            Entity.Location found = _context.Locations.FirstOrDefault(resto => resto.City == location.City && resto.State == location.State && resto.Country == location.Country);
+            // we get the results and return null if nothing is found, otherwise return a Model.Restaurant that was found
+            if (found == null) return null;
+            return new Model.Location(found.Id, found.City, found.State, found.Country);
+        }
     }
 }

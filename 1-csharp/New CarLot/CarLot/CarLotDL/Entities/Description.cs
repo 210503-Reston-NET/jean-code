@@ -10,7 +10,7 @@ namespace CarLotDL.Entities
         public int Id { get; set; }
         public string Rating { get; set; }
         public int Mpg { get; set; }
-        public int CarId { get; set; }
+        public int Price { get; set; }
 
 
         public virtual Car Car { get; set; }

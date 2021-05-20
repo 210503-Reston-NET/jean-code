@@ -19,6 +19,8 @@ namespace CarLotDL.Entities
 
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Description> Descriptions { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
+
 
         public virtual DbSet<Customer> Customers { get; set; }
 
@@ -52,23 +54,18 @@ namespace CarLotDL.Entities
 
             modelBuilder.Entity<Description>(entity =>
             {
-            entity.ToTable("descriptionTable");
+            entity.ToTable("description");
 
             entity.Property(e => e.Id).HasColumnName("id");
 
-            entity.Property(e => e.Mpg)
+            entity.Property(e => e.Mpg).HasColumnName("mpg");
+
+            entity.Property(e => e.Rating)
                 .IsRequired()
                 .HasMaxLength(240)
-                .HasColumnName("Mpg");
+                .HasColumnName("rating");
 
-            entity.Property(e => e.Rating).HasColumnName("rating");
-
-            entity.Property(e => e.CarId).HasColumnName("carID");
-
-            entity.HasOne(d => d.Car)
-                .WithMany(p => p.Descriptions)
-                .HasForeignKey(d => d.CarId)
-                .HasConstraintName("FK__descripti__carID__7E37BEF6");
+            entity.Property(e => e.Id).HasColumnName("price");
             });
 
             
@@ -93,6 +90,29 @@ namespace CarLotDL.Entities
                     .HasMaxLength(50)
                     .HasColumnName("Phone");
             });
+
+            modelBuilder.Entity<Location>(entity =>
+            {
+            entity.ToTable("location");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+
+            entity.Property(e => e.City)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("City");
+
+            entity.Property(e => e.State)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("State");
+
+            entity.Property(e => e.Country)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("Country");
+            });
+
 
             OnModelCreatingPartial(modelBuilder);
         }

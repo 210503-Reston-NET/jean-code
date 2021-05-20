@@ -9,7 +9,9 @@ namespace CarLotUI
 {
     public class CustomerMenu : IMenu
     {
+        private IMenu submenu;
         private ICustomerBL _customerBL;
+        private ICarBL _carBL;
 
 
         private IValidationService _validate;
@@ -34,9 +36,10 @@ namespace CarLotUI
                 {
                     case "0":
                         AddCustomer();
-                        System.Console.WriteLine("Create new account");
                         break;
                     case "1":
+                        submenu = MenuFactory.GetMenu("customertwo");
+                        submenu.Start();
                         System.Console.WriteLine("Login");
                         break;
                     case "2":
