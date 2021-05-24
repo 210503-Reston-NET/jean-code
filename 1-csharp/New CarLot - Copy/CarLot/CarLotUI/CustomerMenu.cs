@@ -12,12 +12,7 @@ namespace CarLotUI
         private IMenu submenu;
         private ICustomerBL _customerBL;
         private ICarBL _carBL;
-
-
         private IValidationService _validate;
-
-
-
         public CustomerMenu(ICustomerBL customerBL, IValidationService validate)
         {
             _customerBL = customerBL;
@@ -25,7 +20,6 @@ namespace CarLotUI
         }
         public void Start(){
             bool repeat = true;
-            // string Pin = "1111";
             do
             {
                 System.Console.WriteLine("[0] Create a new account");

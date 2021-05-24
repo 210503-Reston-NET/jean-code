@@ -13,9 +13,9 @@ namespace CarLotModels
             this.Model = model;
             this.Year = year;
         }
-        public Car(int id, string make, string model, int year) : this(make, model, year)
+        public Car(int inventoryid, string make, string model, int year) : this(make, model, year)
         {
-            this.Id = id;
+            this.InventoryId = inventoryid;
         }
         public Car(){}
         public string Make { get; set; }
@@ -40,7 +40,7 @@ namespace CarLotModels
         {
             return this.Make.Equals(car.Make) && this.Model.Equals(car.Model) && this.Year.Equals(car.Year)&& this.LocationId.Equals(car.LocationId);
         }
-        public int Id { get; set; }
+        public int InventoryId { get; set; }
 
     }
 }

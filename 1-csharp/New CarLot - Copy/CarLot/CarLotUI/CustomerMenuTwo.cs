@@ -22,10 +22,6 @@ namespace CarLotUI
         }
         public void Start(){
             bool repeat = true;
-            // Customer reviewable = CustomerLogin();
-            // Location reviewable = SearchLocation();
-            // int reviewable = 1;
-            // if(reviewable != null)
             Customer reviewable = CustomerLogin();
             do
             {
@@ -46,10 +42,10 @@ namespace CarLotUI
                         break;
                     case "1":
                         Location area = GetLocation();
-                        // System.Console.WriteLine($"Now viewing inventory from : {area.City}, {area.State}");
+                        System.Console.WriteLine($"Now viewing inventory from : {area.City}, {area.State}");
                         break;
                     case "2":
-                        // GetLocation();
+                        ViewLocations();
                         System.Console.WriteLine("View All Locations");
                         break;
                     case "3":
@@ -116,14 +112,51 @@ namespace CarLotUI
             string make = _validate.ValidateString("Enter the vehicle make: ");
             string model = _validate.ValidateString("Enter the vehicle model: ");
             int year = _validate.ValidateInt("Enter the vehicle year: ");
-            try
-            {
-                _carBL.DeleteCar(new Car(make, model, year));
-                System.Console.WriteLine("Vehicle deleted");
+            bool repeat = true;
+            Car current = new Car(make, model, year);
+            if(current != null){
+                do{
+                    System.Console.WriteLine("Currently viewing: ");
+                    System.Console.WriteLine(current.Make);
+                    System.Console.WriteLine(current.Model);
+                    System.Console.WriteLine(current.Year);
+                    System.Console.WriteLine("this car cost....");
+                    Console.WriteLine("[0] Purchase Vehicle");
+                    Console.WriteLine("[1] Go back");
+                    string input = Console.ReadLine();
+                    switch(input)
+                    {
+                        case "0":
+                            try
+                            {
+                                _carBL.DeleteCar(new Car(make, model, year));
+                                System.Console.WriteLine("Vehicle purchased!");
+                            }
+                            catch(Exception ex)
+                            {
+                                System.Console.WriteLine(ex.Message);
+                            }
+                            System.Console.WriteLine("purchasing car");
+                            repeat = false;
+                            break;
+                        case "1":
+                            System.Console.WriteLine("go back");
+                            repeat = false;
+                            break;
+                    }
+                }while(repeat);
             }
-            catch(Exception ex)
+        }
+        public void ViewLocations()
+        {
+            List<Location> locations = _locationBL.GetAllLocations();
+            if (locations.Count == 0) Console.WriteLine("No locations yet");
+            else
             {
-                System.Console.WriteLine(ex.Message);
+                foreach (Location location in locations)
+                {
+                    Console.WriteLine(location.ToString());
+                }
             }
         }
     }

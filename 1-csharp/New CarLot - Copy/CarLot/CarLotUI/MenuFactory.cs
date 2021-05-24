@@ -33,7 +33,7 @@ namespace CarLotUI
                 case "customertwo":
                     return new CustomerMenuTwo(new CustomerBL(new RepoDB(context)), new ValidationService(), new LocationBL(new RepoDB(context)), new CarBL(new RepoDB(context)));
                 case "admin":
-                    return new AdminMenu(new CarBL(new RepoDB(context)), new ValidationService());
+                    return new AdminMenu(new CarBL(new RepoDB(context)));
                 default:
                     return null;
             }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -12,12 +13,14 @@ namespace CarLotDL.Entities
             Descriptions = new HashSet<Description>();
         }
 
-        public int Id { get; set; }
+        [Key]
+        public int InventoryId { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
-        public int locationId { get; set; }
+        public int LocationId { get; set; }
 
+        public virtual ICollection<Location> locations { get; set; }
 
         public virtual ICollection<Description> Descriptions { get; set; }
     }

@@ -2,8 +2,6 @@ using System;
 
 namespace CarLotUI
 {
-    //generic validation service that validates general input, for specific validation rules, put those in the model
-    //properties
     public class ValidationService : IValidationService
     {
         public int ValidateInt(string prompt)
@@ -15,7 +13,6 @@ namespace CarLotUI
                 Console.WriteLine(prompt);
                 try
                 {
-                    // you can also run a regex so you're sure that Int32.Parse works
                     response = Int32.Parse(Console.ReadLine());
                     if (response > -1)
                     {
@@ -33,7 +30,6 @@ namespace CarLotUI
             } while (repeat);
             return response;
         }
-
         public string ValidateString(string prompt)
         {
             string response;

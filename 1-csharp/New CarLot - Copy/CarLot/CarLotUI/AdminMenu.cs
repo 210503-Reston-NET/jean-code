@@ -10,11 +10,14 @@ namespace CarLotUI
         private ICarBL _carBL;
         private IValidationService _validate;
         private IDescriptionBL _descriptionBL;
+        private ILocationBL _locationBL;
 
-        public AdminMenu(ICarBL carBL, IValidationService validate)
+        public AdminMenu(ICarBL carBL)
         {
             _carBL = carBL;
-            _validate = validate;
+            // _descriptionBL = descriptionBL;
+            // _locationBL = locationBL;
+            // _validate = validation;
         }
 
         public void Start(){
@@ -76,7 +79,7 @@ namespace CarLotUI
         //     _descriptionBL.AddDescription(new Description(mpg, rating, price));
         // }
 
-         private Car SearchCar(){
+        private Car SearchCar(){
             string make = _validate.ValidateString("Enter the car Make: ");
             string model = _validate.ValidateString("Enter the Model: ");
             int year = _validate.ValidateInt("Enter the year: ");

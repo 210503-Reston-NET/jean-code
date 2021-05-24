@@ -10,7 +10,7 @@ namespace CarLotDL
         Car GetCar(Car car);
         Car DeleteCar(Car car);
 
-        Description AddDescription(Description description);
+        Description AddDescription(Car car, Description description);
         List<Description> GetDescriptions(Car car);
         
         List<Customer> GetAllCustomers();
@@ -22,6 +22,9 @@ namespace CarLotDL
         Location AddLocation(Location location);
         Location GetLocation(Location location);
         Location DeleteLocation(Location location);
+
+        // Orders AddOrder(Orders orders, Car car, Location location, Customer customer);
+        // Orders GetOrders(Orders orders, Car car, Location location, Customer customer);
 
     }
 }

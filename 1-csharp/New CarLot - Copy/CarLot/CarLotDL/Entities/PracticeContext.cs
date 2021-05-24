@@ -21,6 +21,8 @@ namespace CarLotDL.Entities
         public virtual DbSet<Description> Descriptions { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,14 +33,12 @@ namespace CarLotDL.Entities
             {
             entity.ToTable("inventory");
 
-            entity.Property(e => e.Id).HasColumnName("inventoryid");
-            entity.Property(e => e.locationId).HasColumnName("locationid");
+            entity.Property(e => e.LocationId).HasColumnName("locationid");
 
-
-            entity.Property(e => e.Year)
+            entity.Property(e => e.InventoryId)
                 .IsRequired()
                 .HasMaxLength(50)
-                .HasColumnName("year");
+                .HasColumnName("inventoryid");
 
             entity.Property(e => e.Make)
                 .IsRequired()
@@ -49,29 +49,39 @@ namespace CarLotDL.Entities
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("model");
-            });
 
-
-            modelBuilder.Entity<Description>(entity =>
-            {
-            entity.ToTable("descriptions");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-
-            entity.Property(e => e.Mpg).HasColumnName("mpg");
-
-            entity.Property(e => e.Rating)
+            entity.Property(e => e.Year)
                 .IsRequired()
-                .HasMaxLength(240)
-                .HasColumnName("rating");
+                .HasMaxLength(50)
+                .HasColumnName("year");
 
-            entity.Property(e => e.Id).HasColumnName("price");
 
-            entity.HasOne(d => d.Car)
-                .WithMany(p => p.Descriptions)
-                .HasForeignKey(d => d.InventoryId)
-                .HasConstraintName("FK__descripti__inven__37703C52");
+            // entity.HasOne(d => d.Car)
+            //     .WithMany(p => p.Descriptions)
+            //     .HasForeignKey(d => d.InventoryId)
+            //     .HasConstraintName("FK__descripti__inven__37703C52");
+
             });
+            // modelBuilder.Entity<Description>(entity =>
+            // {
+            // entity.ToTable("descriptions");
+
+            // entity.Property(e => e.Id).HasColumnName("id");
+
+            // entity.Property(e => e.Mpg).HasColumnName("mpg");
+
+            // entity.Property(e => e.Rating)
+            //     .IsRequired()
+            //     .HasMaxLength(240)
+            //     .HasColumnName("rating");
+
+            // entity.Property(e => e.Id).HasColumnName("price");
+
+            // entity.HasOne(d => d.Car)
+            //     .WithMany(p => p.Descriptions)
+            //     .HasForeignKey(d => d.InventoryId)
+            //     .HasConstraintName("FK__descripti__inven__37703C52");
+            // });
 
             
             modelBuilder.Entity<Customer>(entity =>
@@ -117,6 +127,28 @@ namespace CarLotDL.Entities
                 .HasMaxLength(50)
                 .HasColumnName("Country");
             });
+
+            // modelBuilder.Entity<Orders>(entity =>
+            // {
+            // entity.ToTable("Orders");
+
+            // entity.Property(e => e.OrderId).HasColumnName("id");
+
+            // entity.Property(e => e.Carid)
+            //     .IsRequired()
+            //     .HasMaxLength(50)
+            //     .HasColumnName("inventoryid");
+
+            // entity.Property(e => e.Customerid)
+            //     .IsRequired()
+            //     .HasMaxLength(50)
+            //     .HasColumnName("customerid");
+
+            // entity.Property(e => e.Locationid)
+            //     .IsRequired()
+            //     .HasMaxLength(50)
+            //     .HasColumnName("locationid");
+            // });
 
 
             OnModelCreatingPartial(modelBuilder);

@@ -12,9 +12,9 @@ namespace CarLotBL
         {
             _repo = repo;
         }
-        public Description AddDescription(Description description)
+        public Description AddDescription(Car car,Description description)
         {
-            _repo.AddDescription(description);
+            _repo.AddDescription(car, description);
             return description;
         }
 

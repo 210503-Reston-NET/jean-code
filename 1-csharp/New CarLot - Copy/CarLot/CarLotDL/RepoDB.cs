@@ -21,7 +21,9 @@ namespace CarLotDL
                 {
                     Make = car.Make,
                     Model = car.Model,
-                    Year = car.Year
+                    Year = car.Year,
+                    // LocationId = GetLocation(location).Id,
+                    // LocationId = _context.Locations.FirstOrDefault(resto => resto.City == location.City && resto.State == location.State && resto.Country == location.Country).Id
                 }
                 
             );
@@ -29,7 +31,7 @@ namespace CarLotDL
             return car;
         }
 
-        public Model.Description AddDescription(Description description)
+        public Description AddDescription(Car car, Description description)
         {
             _context.Descriptions.Add(
                 new Entity.Description
@@ -46,7 +48,7 @@ namespace CarLotDL
 
         public Car DeleteCar(Car car)
         {
-            Entity.Car toBeDeleted = _context.Cars.First(resto => resto.Id == car.Id);
+            Entity.Car toBeDeleted = _context.Cars.First(resto => resto.InventoryId == car.InventoryId);
             _context.Cars.Remove(toBeDeleted);
             _context.SaveChanges();
             return car;
@@ -64,12 +66,12 @@ namespace CarLotDL
         {
             Entity.Car found = _context.Cars.FirstOrDefault(resto => resto.Make == car.Make && resto.Model == car.Model && resto.Year == car.Year);
             if (found == null) return null;
-            return new Model.Car(found.Id, found.Make, found.Model, found.Year);
+            return new Model.Car(found.InventoryId, found.Make, found.Model, found.Year);
         }
         public List<Description> GetDescriptions(Car car)
         {
             return _context.Descriptions.Where(
-                description => description.Id == GetCar(car).Id
+                description => description.InventoryId == GetCar(car).InventoryId
                 ).Select(
                     description => new Model.Description
                     {
@@ -152,5 +154,22 @@ namespace CarLotDL
             if (found == null) return null;
             return new Model.Location(found.Id, found.City, found.State, found.Country);
         }
+        // public Model.Orders AddOrder(Model.Orders orders, Location location)
+        // {
+        //     _context.Orders.Add(
+        //         new Entity.Orders
+        //         {
+        //             OrderId = orders.OrderId,
+        //             LocationId = GetLocation(location).Id,
+        //             CustomerId = GetCustomer(customer).Id
+        //             CarId = GetCar(car).Id
+
+
+
+        //         }
+        //     );
+        //     _context.SaveChanges();
+        //     return orders;
+        // }
     }
 }
